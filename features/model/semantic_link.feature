@@ -1,7 +1,7 @@
 Feature: Semantic Link
   In order to describe the relationships between Posts in my Postwiki
   As an author
-  I want to add tags to my Post Links
+  I want to add tags to my Links
 
 Prerequisites:
   - Post Link
@@ -10,24 +10,24 @@ Background:
   Given a Post "Luke Skywalker"
   And a Post "Darth Vader"
   And a Post "Princess Leia"
-  And the Post "Luke Skywalker" has no Post Links
-  And the Post "Darth Vader" has no Post Links
-  And the Post "Princess Leia" has no Post Links
+  And the Post "Luke Skywalker" has no Links
+  And the Post "Darth Vader" has no Links
+  And the Post "Princess Leia" has no Links
 
-Scenario: Tagging a Post Link
+Scenario: Tagging a Link
   When I append the following text to the Post "Luke Skywalker"
     """
     Has a love/hate relationship with [Darth Vader #father].
     """
-  Then the Post "Luke Skywalker" should have 1 Post Link with the following
+  Then the Post "Luke Skywalker" should have 1 Link with the following
     | source         | tags   | target      |
     | Luke Skywalker | father | Darth Vader |
-  And the Post "Darth Vader" should have 1 Post Link with the following
+  And the Post "Darth Vader" should have 1 Link with the following
     | source         | tags   | target      |
     | Luke Skywalker | father | Darth Vader |
-  And the Post "Princess Leia" should have no Post Links
+  And the Post "Princess Leia" should have no Links
 
-Scenario: Tagging multiple Post Links
+Scenario: Tagging multiple Links
   When I append the following text to the Post "Luke Skywalker"
     """
     Has a love/hate relationship with [Darth Vader #father].
@@ -43,21 +43,20 @@ Scenario: Tagging multiple Post Links
     Despises her biological father [Darth Vader #father].
     Has less force power than her brother [Luke Skywalker #brother].
     """
-  Then the Post "Luke Skywalker" should have 4 Post Links with the following
+  Then the Post "Luke Skywalker" should have 4 Links with the following
     | source         | tags     | target         |
     | Darth Vader    | son      | Luke Skywalker |
     | Luke Skywalker | father   | Darth Vader    |
     | Luke Skywalker | sister   | Princess Leia  |
     | Princess Leia  | brother  | Luke Skywalker |
-  And the Post "Darth Vader" should have 3 Post Links with the following
+  And the Post "Darth Vader" should have 3 Links with the following
     | source         | tags     | target        |
     | Darth Vader    | daughter | Princess Leia |
     | Luke Skywalker | father   | Darth Vader   |
     | Princess Leia  | father   | Darth Vader   |
-  And the Post "Princess Leia" should have 4 Post Links with the following
+  And the Post "Princess Leia" should have 4 Links with the following
     | source         | tag      | target         |
     | Darth Vader    | daughter | Princess Leia  |
     | Luke Skywalker | sister   | Princess Leia  |
     | Princess Leia  | brother  | Luke Skywalker |
     | Princess Leia  | father   | Darth Vader    |
-
