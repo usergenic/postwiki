@@ -6,16 +6,31 @@ module Postwiki
       @next_id = 0
     end
 
-    def find_links_for(post)
-      links.select do |link|
-        link.source == post or
-        link.tag == post or
-        link.target == post
+    def find_histories(attributes)
+      histories.select do |history|
+        attributes.all? do |key, value|
+          history.send(key) == value
+        end
       end
     end
 
-    def find_post_by_name(name)
-      posts[name]
+    def find_links(attributes)
+      links.select do |link|
+        attributes.all? do |key, value|
+          link.send(key) == value
+        end
+      end
+    end
+
+    def find_post(attributes)
+      if attributes.key?(:name)
+        return posts[attributes[:name]]
+      end
+    end
+
+    def insert_link(link)
+      links << link
+      link.id = next_id
     end
 
     def insert_post(post)
@@ -33,6 +48,10 @@ module Postwiki
 
     def posts
       @posts ||= {}
+    end
+
+    def update_link(link)
+      # the update is a noop when using the in-memory store
     end
 
     def update_post(post)

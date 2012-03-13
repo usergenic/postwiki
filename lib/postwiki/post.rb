@@ -2,10 +2,10 @@ module Postwiki
 
   class Post
 
-    def self.create(wiki, attributes={})
-      post = new(wiki, attributes)
-      post.save
-      post
+    Data = Struct.new :id, :name, :text
+
+    def self.from_data(data)
+      self.id, self.name, self.text = data.id, data.name, data.text
     end
 
     attr_reader :wiki
@@ -19,8 +19,18 @@ module Postwiki
       @id   = attributes[:id]
     end
 
+    def data
+      Data.new(id, name, text)
+    end
+
+    def histories
+      wiki.find_histories(:post => self)
+    end
+
     def links
-      wiki.find_links_for(self)
+      wiki.find_links(:source => self) +
+      wiki.find_links(:tag    => self) +
+      wiki.find_links(:target => self)
     end
 
     def new?

@@ -1,18 +1,21 @@
-Transform /^Post "(.*)"$/ do |post_name|
-  wiki.posts.find_by_name(post_name)
+Transform /^Post "(.*)"$/ do |name|
+  wiki.posts.find(:name => name)
 end
 
-Given /^a Post "(.*)"$/ do |post_name|
-  wiki.posts.create :name => post_name
+Given /^a Post "(.*)"$/ do |name|
+  wiki.posts.create(:name => name)
 end
 
-Given /^a Post "(.*)" with the following text$/ do |post_name, text|
-  wiki.posts.create :name => post_name, :text => text
+Given /^a Post "(.*)" with the following text$/ do |name, text|
+  wiki.posts.create(:name => name, :text => text)
 end
 
 Given /^the following Links?$/ do |table|
-  table.hashes.each do |post_link_hash|
-    wiki.links.create(post_link_hash)
+  table.hashes.each do |link|
+    link.each do |key, value|
+      link[key] &&= wiki.posts.find_or_create(:name => value)
+    end
+    wiki.links.create(link)
   end
 end
 
@@ -57,7 +60,7 @@ Then /^the (Post ".*") should have (no|\d+) Links?$/ do |post, count|
 end
 
 # FIXME: this feels/looks ugly.  Perhaps a custom RSpec expectation to fix?
-Then /^the Post "(.*)" should have (no|\d+) Links? with the following$/ do |post_name, count, table|
+Then /^the (Post ".*") should have (no|\d+) Links? with the following$/ do |post, count, table|
   links = post.links
   links.count.should == count.to_i
   table.hashes.each do |row_hash|
