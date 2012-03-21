@@ -1,6 +1,6 @@
 Feature: Wiki Homepage
-  In order to give context to users coming to the front door
-  As an admin
+  In order to give context to users coming to the front door,
+  as an admin,
   I want to assign one of my posts to be my wiki's homepage
 
 Scenario: Creating the first post sets it as the homepage
