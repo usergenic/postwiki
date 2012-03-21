@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    postwiki (1.0.0)
+    postwiki (0.0.1)
 
 GEM
   remote: http://rubygems.org/
