@@ -6,18 +6,19 @@ Feature: Link to Post
 Background:
   Given I am logged in as User "Alice"
   And my wiki has a Post "White Rabbit"
-  And my wiki has a Post "Wonderland"
+  And my wiki has a Post "Underland"
 
-Scenario: Submitting wikitext containing a new link creates a link
+Scenario: Adding a link in the wikitext
   Given I am on the Post page for "White Rabbit"
-  When I add a link to "Wonderland" to the wikitext input
-  And I submit the Edit Post form
-  Then I should see "White Rabbit" links to "Wonderland"
+  When I add a link to "Underland" in the wikitext
+  And I click the save button
+  Then I should be on the Post page for "White Rabbit"
+  And I should see Post "White Rabbit" links to Post "Underland"
 
-Scenario: Submitting wikitext without a link removed, destroys a link
-  Given the Post "White Rabbit" links to Post "Wonderland"
+Scenario: Removing a link from wikitext
+  Given the Post "White Rabbit" links to Post "Underland"
   And I am on the Post page for "White Rabbit"
-  When I delete the link to "Wonderland" from the wikitext input
-  And I submit the Edit Post form
-  And I should not see "White Rabbit" links to "Wonderland"
-
+  When I delete the link to "Underland" in the wikitext
+  And I click the save button
+  Then I should be on the Post page for "White Rabbit"
+  And I should see Post "White Rabbit" does not link to Post "Underland"
