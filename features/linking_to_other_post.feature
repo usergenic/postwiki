@@ -10,7 +10,7 @@ Background:
 
 Scenario: Adding a link in the wikitext
   Given I am on the Post page for "White Rabbit"
-  When I add a link to "Underland" in the wikitext
+  When I add a link to "Underland" to the wikitext
   And I click the save button
   Then I should see Post "White Rabbit" links to Post "Underland"
 
