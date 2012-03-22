@@ -1,4 +1,4 @@
-Feature: Linking to other posts
+Feature: Linking to other post
   In order to read posts which are referenced by other posts,
   as a reader,
   I want to click on a link to visit another post
