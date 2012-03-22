@@ -1,4 +1,4 @@
-Feature: Link to Post
+Feature: Linking to other posts
   In order to read posts which are referenced by other posts,
   as a reader,
   I want to click on a link to visit another post
@@ -12,13 +12,11 @@ Scenario: Adding a link in the wikitext
   Given I am on the Post page for "White Rabbit"
   When I add a link to "Underland" in the wikitext
   And I click the save button
-  Then I should be on the Post page for "White Rabbit"
-  And I should see Post "White Rabbit" links to Post "Underland"
+  Then I should see Post "White Rabbit" links to Post "Underland"
 
 Scenario: Removing a link from wikitext
   Given the Post "White Rabbit" links to Post "Underland"
   And I am on the Post page for "White Rabbit"
-  When I delete the link to "Underland" in the wikitext
+  When I remove the link to "Underland" from the wikitext
   And I click the save button
-  Then I should be on the Post page for "White Rabbit"
-  And I should see Post "White Rabbit" does not link to Post "Underland"
+  Then I should see Post "White Rabbit" does not link to Post "Underland"
