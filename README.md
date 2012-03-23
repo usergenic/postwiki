@@ -12,12 +12,8 @@ operational, this README will be updated to reflect that.  For now, you are
 looking at something between software and vaporware, or as I like to call it
 "aspirationware".
 
-Features that I care about in a wiki
-------------------------------------
-
-* Markup language should be minimalistic, natural and obvious.  I am choosing
-  Markdown as the basis for the wikitext with a couple simple enhancements to
-  make it even easier to link to other posts in the same wiki.
+Design Goals of Postwiki
+------------------------
 
 * Semantic links turn what would otherwise be purely opaque text content into
   machine-usable information.  Linking in Postwiki will support qualifiers or
@@ -47,5 +43,41 @@ Features that I care about in a wiki
 
   * My personal website, blog and otherwise, should be very easily
     constructable on a Postwiki.
+
+* Markup language should be minimalistic, natural and obvious.  I am choosing
+  Markdown as the basis for the wikitext with a couple simple enhancements to
+  make it even easier to link to other posts in the same wiki.
+
+Features
+--------
+
+* Getting Started
+  * Create the first user for a wiki with no users
+  * Creating the first post for a wiki with no posts
+
+* Installation
+  * Run locally with SQLite storage
+  * Deploy for free to Heroku with 5MB MySQL storage
+
+* Content Management
+  * Create a post by visiting an unclaimed URL
+  * Create a post by clicking the global Create Post button
+  * Edit a post by clicking the Edit button on post page
+  * Rename a post by changing its first line of wikitext
+  * Rename a post changes the wikitext of posts that link to it
+  * Retire a post by clicking the Retire button on post page
+  * Delete a post by clicking the Delete button on post page
+  * Link to a post by adding a link in wikitext
+  * Link to a post by adding a prefix link in wikitext
+
+* Access Control
+  * Lock an unlocked post by clicking the Lock button on post page
+  * Unlock a locked post by clicking the Unlock button on post page
+
+* User Administration
+  * Create a user by clicking the Add button on User List page
+  * Retire a user by clicking the Retire button on User Profile page
+  * Delete a user by clicking the Delete button on User Profile page
+
 
 
