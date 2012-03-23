@@ -1,7 +1,10 @@
-Feature: Creating the first user
+Feature: Create the first user for a wiki with no users
   In order to get started using my new wiki,
   as the first user to the system,
   I want to create my account and login
+
+Background:
+  Given my wiki has no users.
 
 Scenario: A wiki with no user accounts prompts to create one
   When I visit the homepage
