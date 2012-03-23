@@ -60,7 +60,7 @@ Features
   * Deploy for free to Heroku with 5MB MySQL storage
 
 * Content Management
-  * Create a post by visiting an unclaimed URL
+  * Create a post by visiting the post page for an unrecognized name
   * Create a post by clicking the global Create Post button
   * Edit a post by clicking the Edit button on post page
   * Rename a post by changing its first line of wikitext

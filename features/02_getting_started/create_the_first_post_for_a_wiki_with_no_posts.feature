@@ -1,4 +1,4 @@
-Feature: Creating the first post
+Feature: Create the first post for a wiki with no posts
   In order to get started using my new wiki,
   as an author,
   I want to be directed to create my first post

@@ -1,4 +1,4 @@
-Feature: Creating a new post
+Feature: Create a post by visiting the post page for an unknown name
   In order to communicate my ideas,
   as an author,
   I want to be able to post them to my wiki
